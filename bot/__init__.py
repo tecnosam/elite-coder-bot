@@ -1,4 +1,5 @@
 # bot.py
+import asyncio
 import os
 
 import discord
@@ -19,7 +20,8 @@ async def on_ready():
         if guild.name == GUILD:
             break
 
-    await news_aggregator.send_to_channel(client)
+    loop = asyncio.get_event_loop()
+    asyncio.run_coroutine_threadsafe(news_aggregator.send_to_channel(client), loop)
 
     print(
         f'{client.user} is connected to the following guild:\n'
