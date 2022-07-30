@@ -1,6 +1,6 @@
+import asyncio
 import discord
 import feedparser
-import time
 
 from bs4 import BeautifulSoup as bs
 
@@ -33,7 +33,7 @@ async def send_to_channel(client: discord.Client):
 
             # yield msg
             await channel.send(msg)
-            time.sleep(300)  # wait for 5 minutes
+            await asyncio.sleep(300)
 
         except AttributeError:
             print(server)
